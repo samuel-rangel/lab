@@ -1,12 +1,15 @@
 <?php
-$connectionInfo = array("UID" => "samu", "pwd" => "$4muD4t4", "Database" => "laboratorio", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:17051809.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+$server = "20.124.34.65";
+$username = "cloud";
+$password = "$4muD4t4";
+$database = "proyecto";
 
-if( $conn ) {
-     echo "Conexión establecida.<br />";
-}else{
-     echo "Conexión no se pudo establecer.<br />";
-     die( print_r( sqlsrv_errors(), true));
+// Create connection
+$conn = new mysqli($server, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
+echo "Connected successfully";
 ?>
