@@ -2,7 +2,7 @@
 $server = "20.124.34.65";
 $username = "cloud";
 $password = "$4muD4t4";
-$database = "proyecto";
+$database = "proy";
 
 // Create connection
 $conn = new mysqli($server, $username, $password, $database);
