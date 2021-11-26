@@ -11,5 +11,16 @@ $conn = new mysqli($server, $username, $password, $database);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+else{
+     $query = "SELECT * FROM test";
+     if ($resultado = $conn->query($query)) {
+          while ($fila = $resultado->fetch_row()) {
+               echo 'id = '.$fila[0];
+               echo '\n descripcion = '.$fila[1];
+          }
+     }
+     else{
+          echo 'error';
+     }
+}
 ?>
