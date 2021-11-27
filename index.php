@@ -1,26 +1,30 @@
 <?php
-$server = "20.124.34.65";
-$username = "cloud";
-$password = "$4muD4t4";
-$database = "proy";
-
-// Create connection
-$conn = new mysqli($server, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-else{
-     $query = "SELECT * FROM test";
-     if ($resultado = $conn->query($query)) {
-          while ($fila = $resultado->fetch_row()) {
-               echo '<br/> id = '.$fila[0];
-               echo '<br/> descripcion = '.$fila[1];
-          }
-     }
-     else{
-          echo 'error';
-     }
-}
+include('connection.php');
 ?>
+<html>
+     <head>
+          <script src="index.js"></script>
+          <h1>Aplicacion con base de datos</h1>
+     </head>
+     <body>
+          <div>
+               <h3>Insertar datos</h3>
+               <form method="POST" action="endpoint.php">
+                    <input name="data" type="text" placeholder="datos a insertar...">
+                    <button type="submit">Guardar</button>
+               </form>
+          </div>
+          <div>
+               <h3>Datos</h3>
+               <table id="tb">
+                    <th>
+                         <td>Id</td>
+                         <td>Texto</td>
+                    </th>
+                    <?php
+                    getData();
+                    ?>
+               </table>
+          </div>
+     </body>
+</html>
